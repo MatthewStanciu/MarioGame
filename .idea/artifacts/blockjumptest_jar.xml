@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="blockjumptest:jar">
+    <output-path>$USER_HOME$/Downloads</output-path>
+    <root id="archive" name="blockjumptest.jar">
+      <element id="module-output" name="blockjumptest" />
+    </root>
+  </artifact>
+</component>
