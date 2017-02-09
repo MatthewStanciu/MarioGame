@@ -3,6 +3,9 @@
     <output-path>$USER_HOME$/Downloads</output-path>
     <root id="archive" name="blockjumptest.jar">
       <element id="module-output" name="blockjumptest" />
+      <element id="file-copy" path="$PROJECT_DIR$/src/net/extrillius/blocktest/Mario.java" />
+      <element id="file-copy" path="$PROJECT_DIR$/src/net/extrillius/blocktest/plugin.yml" />
+      <element id="file-copy" path="$PROJECT_DIR$/src/net/extrillius/blocktest/ThingGenerator.java" />
     </root>
   </artifact>
 </component>

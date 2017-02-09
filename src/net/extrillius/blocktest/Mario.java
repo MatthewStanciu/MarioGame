@@ -5,6 +5,7 @@ import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.World;
 import org.bukkit.block.Block;
+import org.bukkit.block.BlockFace;
 import org.bukkit.entity.Fireball;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -31,14 +32,15 @@ public class Mario extends JavaPlugin implements Listener {
         getServer().getPluginManager().registerEvents(this, this);
     }
 
+    @EventHandler
     public void move(PlayerMoveEvent e) {
         Player p = e.getPlayer();
-        Location l = p.getLocation().add(0, 0.3, 0);
-        Block b = l.getBlock();
+        Location l = p.getLocation();
+        Block b = l.add(0,2,0).getBlock();
 
-        if (p.getLocation().subtract(0, 1, 0).getBlock().getType() != Material.AIR) {
-            if (b.getType() == Material.GOLD_BLOCK) {
-                l.getBlock().setType(Material.BRICK);
+        if (p.getLocation().subtract(0, 0.001, 0).getBlock().getType() == Material.AIR) {
+            if (b.getY() - p.getEyeLocation().getY() <= 1 && b.getType() == Material.GOLD_BLOCK) {
+                b.setType(Material.BRICK);
 
                 ThingGenerator generator = new ThingGenerator();
                 String thing = generator.generateThing();
