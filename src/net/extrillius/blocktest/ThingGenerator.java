@@ -26,7 +26,4 @@ public class ThingGenerator extends JavaPlugin {
         int n = r.nextInt(powerups.length);
         return powerups[n];
     }
-    public String getThing() {
-        return generateThing();
-    }
 }

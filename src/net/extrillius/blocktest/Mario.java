@@ -41,14 +41,14 @@ public class Mario extends JavaPlugin implements Listener {
                 l.getBlock().setType(Material.BRICK);
 
                 ThingGenerator generator = new ThingGenerator();
-                generator.generateThing();
-                if (generator.getThing().equals("bigmushroom")) {
+                String thing = generator.generateThing();
+                if (thing.equals("bigmushroom")) {
                     p.getWorld().dropItem(l.add(1,1,0), new ItemStack(Material.RED_MUSHROOM));
                 }
-                else if (generator.getThing().equals("1upmushroom")) {
+                else if (thing.equals("1upmushroom")) {
                     p.getWorld().dropItem(l.add(1,1,0), new ItemStack(Material.BROWN_MUSHROOM));
                 }
-                else if (generator.getThing().equals("fireflower")) {
+                else if (thing.equals("fireflower")) {
                     p.getWorld().dropItem(l.add(1,1,0), new ItemStack(Material.YELLOW_FLOWER));
                 }
             }
