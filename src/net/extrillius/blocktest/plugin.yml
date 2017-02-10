@@ -2,3 +2,9 @@ name: mariogame
 author: techbug2012
 version: 1.0
 main: net.extrillius.blocktest.Mario
+
+commands:
+  disablepowerups:
+    description: disables powerups
+  powerupstatus:
+    description: check powerup status

@@ -1,11 +1,10 @@
 package net.extrillius.blocktest;
 
-import org.bukkit.Location;
-import org.bukkit.Material;
-import org.bukkit.Sound;
-import org.bukkit.World;
+import org.bukkit.*;
 import org.bukkit.block.Block;
-import org.bukkit.block.BlockFace;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Fireball;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
@@ -45,23 +44,28 @@ public class Mario extends JavaPlugin implements Listener {
 
                 ThingGenerator generator = new ThingGenerator();
                 String thing = generator.generateThing();
-                if (thing.equals("bigmushroom")) {
-                    Item itemThing = p.getWorld().dropItem(l.add(0,3,0), new ItemStack(Material.RED_MUSHROOM));
-                    itemThing.setVelocity(p.getLocation().getDirection().multiply(2));
-                }
-                else if (thing.equals("1upmushroom")) {
-                    Item itemThing = p.getWorld().dropItem(l.add(0,3,0), new ItemStack(Material.BROWN_MUSHROOM));
-                    itemThing.setVelocity(p.getLocation().getDirection().multiply(2));
-                }
-                else if (thing.equals("fireflower")) {
-                    Item itemThing = p.getWorld().dropItem(l.add(0,3,0), new ItemStack(Material.YELLOW_FLOWER));
-                    itemThing.setVelocity(p.getLocation().getDirection().multiply(2));
+                Material item;
+                Item droppedItem;
+                switch (thing) {
+                    case "bigmushroom":
+                        item = Material.RED_MUSHROOM;
+                        p.getWorld().dropItem(l.add(0,3,0), new ItemStack(item));
+                        break;
+                    case "1upmushroom":
+                        item = Material.BROWN_MUSHROOM;
+                        p.getWorld().dropItem(l.add(0,3,0), new ItemStack(item));
+                        break;
+                    case "fireflower":
+                        item = Material.YELLOW_FLOWER;
+                        p.getWorld().dropItem(l.add(0,3,0), new ItemStack(item));
+                        break;
                 }
             }
         }
 
         if (p.getInventory().contains(Material.RED_MUSHROOM)) {
             p.getInventory().remove(Material.RED_MUSHROOM);
+            p.setMaxHealth(40);
             p.setHealth(40);
             p.getWorld().playSound(p.getLocation(), Sound.LEVEL_UP, 10, 1);
         }
@@ -95,7 +99,7 @@ public class Mario extends JavaPlugin implements Listener {
     public void damage(EntityDamageByEntityEvent e) {
         if (e.getDamager() instanceof Player && e.getEntity() instanceof Player) {
             Player damager = (Player) e.getDamager();
-            final Player damaged = (Player) e.getEntity();
+            Entity damaged = e.getEntity();
             if (fire) {
                 damaged.setFireTicks(100);
             }
@@ -127,6 +131,35 @@ public class Mario extends JavaPlugin implements Listener {
             fire = false;
             p.resetMaxHealth();
         }
+    }
+
+    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+        Player p = (Player) sender;
+        if (cmd.getName().equalsIgnoreCase("disablepowerups")) { //temporary until I add other ways to deactivate powerups
+            fire = false;
+            extraLife = false;
+            p.setMaxHealth(20);
+            p.setHealth(20);
+            p.sendMessage(ChatColor.GREEN + "Powerups disabled");
+        }
+        if (cmd.getName().equalsIgnoreCase("powerupstatus")) {
+            StringBuilder builder = new StringBuilder();
+
+            if (fire) {
+                builder.append("fire ");
+            }
+            else if (extraLife) {
+                builder.append("1up ");
+            }
+            else if (p.getHealth() > 20) {
+                builder.append("redmushroom ");
+            }
+            else {
+                p.sendMessage(ChatColor.GREEN + "nothing");
+            }
+            p.sendMessage(builder.toString());
+        }
+        return true;
     }
 
     //TODO flag jump
