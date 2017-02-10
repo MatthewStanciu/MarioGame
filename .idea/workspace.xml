@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="4e1f054b-723e-4baa-9e4f-b3a3e54aeb0b" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/extrillius/blocktest/Mario.java" afterPath="$PROJECT_DIR$/src/net/extrillius/blocktest/Mario.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/extrillius/blocktest/ThingGenerator.java" afterPath="$PROJECT_DIR$/src/net/extrillius/blocktest/ThingGenerator.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -385,7 +383,14 @@
       <option name="project" value="LOCAL" />
       <updated>1486675201676</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="can't get random generator to drop item">
+      <created>1486696796791</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1486696796791</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -429,7 +434,8 @@
     <MESSAGE value="changed the generating thing to make it work better" />
     <MESSAGE value="added plugin.yml" />
     <MESSAGE value="Changing the gold block to brick didn't work - fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changing the gold block to brick didn't work - fixed" />
+    <MESSAGE value="can't get random generator to drop item" />
+    <option name="LAST_COMMIT_MESSAGE" value="can't get random generator to drop item" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
