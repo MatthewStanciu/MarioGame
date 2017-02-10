@@ -7,6 +7,7 @@ import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.entity.Fireball;
+import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -45,13 +46,16 @@ public class Mario extends JavaPlugin implements Listener {
                 ThingGenerator generator = new ThingGenerator();
                 String thing = generator.generateThing();
                 if (thing.equals("bigmushroom")) {
-                    p.getWorld().dropItem(l.add(1,1,0), new ItemStack(Material.RED_MUSHROOM));
+                    Item itemThing = p.getWorld().dropItem(l.add(0,3,0), new ItemStack(Material.RED_MUSHROOM));
+                    itemThing.setVelocity(p.getLocation().getDirection().multiply(2));
                 }
                 else if (thing.equals("1upmushroom")) {
-                    p.getWorld().dropItem(l.add(1,1,0), new ItemStack(Material.BROWN_MUSHROOM));
+                    Item itemThing = p.getWorld().dropItem(l.add(0,3,0), new ItemStack(Material.BROWN_MUSHROOM));
+                    itemThing.setVelocity(p.getLocation().getDirection().multiply(2));
                 }
                 else if (thing.equals("fireflower")) {
-                    p.getWorld().dropItem(l.add(1,1,0), new ItemStack(Material.YELLOW_FLOWER));
+                    Item itemThing = p.getWorld().dropItem(l.add(0,3,0), new ItemStack(Material.YELLOW_FLOWER));
+                    itemThing.setVelocity(p.getLocation().getDirection().multiply(2));
                 }
             }
         }
