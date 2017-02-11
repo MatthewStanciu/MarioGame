@@ -1,13 +1,11 @@
 package net.extrillius.blocktest;
 
+import org.apache.logging.log4j.Level;
 import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.Fireball;
-import org.bukkit.entity.Item;
-import org.bukkit.entity.Player;
+import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
@@ -20,6 +18,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Logger;
 
 /**
  * Created by mattbstanciu on 1/26/17.
@@ -45,21 +44,21 @@ public class Mario extends JavaPlugin implements Listener {
                 ThingGenerator generator = new ThingGenerator();
                 String thing = generator.generateThing();
                 Material item;
-                Item droppedItem;
                 switch (thing) {
                     case "bigmushroom":
                         item = Material.RED_MUSHROOM;
-                        p.getWorld().dropItem(l.add(0,3,0), new ItemStack(item));
                         break;
                     case "1upmushroom":
                         item = Material.BROWN_MUSHROOM;
-                        p.getWorld().dropItem(l.add(0,3,0), new ItemStack(item));
                         break;
                     case "fireflower":
                         item = Material.YELLOW_FLOWER;
-                        p.getWorld().dropItem(l.add(0,3,0), new ItemStack(item));
+                        break;
+                    default:
+                        item = Material.AIR;
                         break;
                 }
+                p.getWorld().dropItem(l.add(0,3,0), new ItemStack(item));
             }
         }
 
@@ -98,7 +97,6 @@ public class Mario extends JavaPlugin implements Listener {
     @EventHandler
     public void damage(EntityDamageByEntityEvent e) {
         if (e.getDamager() instanceof Player && e.getEntity() instanceof Player) {
-            Player damager = (Player) e.getDamager();
             Entity damaged = e.getEntity();
             if (fire) {
                 damaged.setFireTicks(100);
@@ -109,27 +107,35 @@ public class Mario extends JavaPlugin implements Listener {
     @EventHandler
     public void shootFire(PlayerInteractEvent e) {
         Player p = e.getPlayer();
-        if (e.getAction() == Action.RIGHT_CLICK_AIR) {
+        if (e.getAction() == Action.RIGHT_CLICK_AIR || e.getAction() == Action.LEFT_CLICK_AIR) {
             if (fire) {
-                p.launchProjectile(Fireball.class).setVelocity(p.getLocation().getDirection().multiply(2));
+                Fireball f = p.launchProjectile(Fireball.class);
+                f.setVelocity(p.getLocation().getDirection().multiply(2));
+                f.setIsIncendiary(false);
+                f.setYield(0);
             }
         }
     }
 
     @EventHandler
-    public void onDeath(PlayerDeathEvent e) { //might not work
-        Map<Player, Location> loc = new HashMap<>();
-        Player p = e.getEntity();
+    public void onDeath(PlayerDeathEvent e) {
+        final Player p = e.getEntity();
         if (extraLife) {
-            loc.put(p, p.getLocation());
-            p.teleport(loc.get(p));
-            p.setMaxHealth(40);
-            p.setHealth(40);
+            getServer().getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
+                @Override
+                public void run() {
+                    if (p.isDead()) {
+                        p.setMaxHealth(20);
+                        p.setHealth(20);
+                        extraLife = false;
+                    }
+                }
+            });
         }
         else {
             extraLife = false;
             fire = false;
-            p.resetMaxHealth();
+            p.setMaxHealth(20);
         }
     }
 

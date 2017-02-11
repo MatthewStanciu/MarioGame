@@ -4,7 +4,6 @@
     <list default="true" id="4e1f054b-723e-4baa-9e4f-b3a3e54aeb0b" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/extrillius/blocktest/Mario.java" afterPath="$PROJECT_DIR$/src/net/extrillius/blocktest/Mario.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/extrillius/blocktest/plugin.yml" afterPath="$PROJECT_DIR$/src/net/extrillius/blocktest/plugin.yml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -26,9 +25,13 @@
       <file leaf-file-name="Mario.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/net/extrillius/blocktest/Mario.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" column="30" lean-forward="false" selection-start-line="3" selection-start-column="30" selection-end-line="3" selection-end-column="30" />
-              <folding />
+            <state relative-caret-position="620">
+              <caret line="99" column="29" lean-forward="false" selection-start-line="99" selection-start-column="29" selection-end-line="99" selection-end-column="29" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#4410#4708#0" expanded="true" />
+                <element signature="e#4707#4708#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -407,7 +410,14 @@
       <option name="project" value="LOCAL" />
       <updated>1486696966391</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="switched to switch statements for thing generator; added temporary commands">
+      <created>1486702422286</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1486702422286</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -453,7 +463,8 @@
     <MESSAGE value="Changing the gold block to brick didn't work - fixed" />
     <MESSAGE value="can't get random generator to drop item" />
     <MESSAGE value="can't get random generator to drop item_2" />
-    <option name="LAST_COMMIT_MESSAGE" value="can't get random generator to drop item_2" />
+    <MESSAGE value="switched to switch statements for thing generator; added temporary commands" />
+    <option name="LAST_COMMIT_MESSAGE" value="switched to switch statements for thing generator; added temporary commands" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -470,7 +481,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#4410#4708#0" expanded="true" />
+            <element signature="e#4707#4708#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -494,7 +509,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#4410#4708#0" expanded="true" />
+            <element signature="e#4707#4708#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -518,7 +537,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#4410#4708#0" expanded="true" />
+            <element signature="e#4707#4708#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -542,7 +565,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1725">
           <caret line="115" column="0" lean-forward="false" selection-start-line="115" selection-start-column="0" selection-end-line="115" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#4410#4708#0" expanded="true" />
+            <element signature="e#4707#4708#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -566,7 +593,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#4410#4708#0" expanded="true" />
+            <element signature="e#4707#4708#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -582,7 +613,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#4410#4708#0" expanded="true" />
+            <element signature="e#4707#4708#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -598,7 +633,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#4410#4708#0" expanded="true" />
+            <element signature="e#4707#4708#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -614,7 +653,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1755">
           <caret line="121" column="31" lean-forward="false" selection-start-line="121" selection-start-column="31" selection-end-line="121" selection-end-column="31" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#4410#4708#0" expanded="true" />
+            <element signature="e#4707#4708#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -630,7 +673,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#4410#4708#0" expanded="true" />
+            <element signature="e#4707#4708#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -662,9 +709,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/net/extrillius/blocktest/Mario.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="30" lean-forward="false" selection-start-line="3" selection-start-column="30" selection-end-line="3" selection-end-column="30" />
-          <folding />
+        <state relative-caret-position="620">
+          <caret line="99" column="29" lean-forward="false" selection-start-line="99" selection-start-column="29" selection-end-line="99" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#4410#4708#0" expanded="true" />
+            <element signature="e#4707#4708#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
