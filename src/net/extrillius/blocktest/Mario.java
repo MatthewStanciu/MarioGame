@@ -1,6 +1,5 @@
 package net.extrillius.blocktest;
 
-import org.apache.logging.log4j.Level;
 import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.command.Command;
@@ -16,16 +15,14 @@ import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.logging.Logger;
-
 /**
  * Created by mattbstanciu on 1/26/17.
  */
+//todo flag jump
+//todo powerup timer
 public class Mario extends JavaPlugin implements Listener {
     public Boolean extraLife = false;
-    public Boolean fire = false;
+    private PowerupTimer timer = new PowerupTimer();
 
     public void onEnable() {
         getServer().getPluginManager().registerEvents(this, this);
@@ -84,21 +81,27 @@ public class Mario extends JavaPlugin implements Listener {
         }
         else if (p.getInventory().contains(Material.YELLOW_FLOWER)) {
             p.getWorld().playSound(p.getLocation(), Sound.GHAST_FIREBALL, 10, 1);
-            fire = true;
             p.getInventory().remove(Material.YELLOW_FLOWER);
+            timer.fire = true;
+            new PowerupTimer().runTaskTimer(this, 0L, 100L);
         }
 
         if (extraLife) {
             p.setMaxHealth(40);
             p.setHealth(40);
         }
+
+        if (p.getHealth() <= 20 && p.getMaxHealth() == 40) {
+            p.setMaxHealth(20);
+        }
     }
 
     @EventHandler
     public void damage(EntityDamageByEntityEvent e) {
         if (e.getDamager() instanceof Player && e.getEntity() instanceof Player) {
+            Entity damager = e.getDamager();
             Entity damaged = e.getEntity();
-            if (fire) {
+            if (timer.fire) {
                 damaged.setFireTicks(100);
             }
         }
@@ -108,7 +111,7 @@ public class Mario extends JavaPlugin implements Listener {
     public void shootFire(PlayerInteractEvent e) {
         Player p = e.getPlayer();
         if (e.getAction() == Action.RIGHT_CLICK_AIR || e.getAction() == Action.LEFT_CLICK_AIR) {
-            if (fire) {
+            if (timer.fire) {
                 Fireball f = p.launchProjectile(Fireball.class);
                 f.setVelocity(p.getLocation().getDirection().multiply(2));
                 f.setIsIncendiary(false);
@@ -134,7 +137,7 @@ public class Mario extends JavaPlugin implements Listener {
         }
         else {
             extraLife = false;
-            fire = false;
+            timer.fire = false;
             p.setMaxHealth(20);
         }
     }
@@ -142,7 +145,7 @@ public class Mario extends JavaPlugin implements Listener {
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         Player p = (Player) sender;
         if (cmd.getName().equalsIgnoreCase("disablepowerups")) { //temporary until I add other ways to deactivate powerups
-            fire = false;
+            timer.fire = false;
             extraLife = false;
             p.setMaxHealth(20);
             p.setHealth(20);
@@ -151,7 +154,7 @@ public class Mario extends JavaPlugin implements Listener {
         if (cmd.getName().equalsIgnoreCase("powerupstatus")) {
             StringBuilder builder = new StringBuilder();
 
-            if (fire) {
+            if (timer.fire) {
                 builder.append("fire ");
             }
             else if (extraLife) {
@@ -167,6 +170,4 @@ public class Mario extends JavaPlugin implements Listener {
         }
         return true;
     }
-
-    //TODO flag jump
 }
